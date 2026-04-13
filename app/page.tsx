@@ -92,7 +92,7 @@ export default function Home() {
               <Countdown /> 
               {/* <Gallery /> */}
               <GuestList />
-<BookOfGuests />
+{/* <BookOfGuests /> */}
               <Messages />
               <Details />
               {/* <GuestInformation /> */}
@@ -107,7 +107,7 @@ export default function Home() {
               {/* <FAQ /> */}
 
 
-              <SnapShare />
+              {/* <SnapShare /> */}
               <Footer />
             </div>
           </div>

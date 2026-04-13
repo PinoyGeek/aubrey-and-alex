@@ -521,7 +521,7 @@ export function Details() {
                 <div className="flex items-start gap-2 mb-0.5">
                   <p className="text-sm sm:text-base md:text-lg font-[family-name:var(--font-crimson)] text-motif-deep leading-relaxed">
                     <span className="font-semibold tracking-wide">Gentlemen:</span>{" "}
-                    <span className="italic">Barong and pants</span>
+                    <span className="italic">Barong and Black Pants</span>
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
@@ -587,22 +587,22 @@ export function Details() {
               {/* Guests Dress Code Text */}
                 <div className="pt-3 sm:pt-4 border-t border-motif-silver/70 px-3 sm:px-4">
                 <div className="flex items-start gap-2 mb-0.5">
-                  <p className="text-sm sm:text-base md:text-lg font-[family-name:var(--font-crimson)] text-motif-deep leading-relaxed">
+                  {/* <p className="text-sm sm:text-base md:text-lg font-[family-name:var(--font-crimson)] text-motif-deep leading-relaxed">
                     <span className="font-semibold tracking-wide">Gentlemen:</span>{" "}
                     <span className="italic">Polo or long sleeves shirt and pants</span>
-                  </p>
+                  </p> */}
                 </div>
                 <div className="flex items-start gap-2">
-                  <p className="text-sm sm:text-base md:text-lg font-[family-name:var(--font-crimson)] text-motif-deep leading-relaxed">
+                  {/* <p className="text-sm sm:text-base md:text-lg font-[family-name:var(--font-crimson)] text-motif-deep leading-relaxed">
                     <span className="font-semibold tracking-wide">Ladies:</span>{" "}
                     <span className="italic">Long or cocktail dress in shades of beige or emerald green</span>
-                  </p>
+                  </p> */}
                   </div>
                   <div className="flex items-center gap-2 mt-3 pt-3 border-t border-motif-silver/40">
                     <span className="text-xs font-bold tracking-widest uppercase text-motif-silver/70 shrink-0">Note</span>
                     <span className="text-motif-silver/50 shrink-0">—</span>
                     <p className="text-xs sm:text-sm font-[family-name:var(--font-crimson)] text-motif-deep/70 italic leading-relaxed">
-                      Strictly no sando and shorts, please.
+                    Please check the attached color palette or swatch as a guide in selecting your attire. Any style and color of your choice, just refrain from color white. It is strictly reserved for the Bride.
                     </p>
                   </div>
               </div>

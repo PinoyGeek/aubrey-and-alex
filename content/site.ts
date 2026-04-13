@@ -28,7 +28,7 @@ export const siteConfig = {
   },
   details: {
     rsvp: {
-      deadline: "June 10, 2026",
+      deadline: "May 24, 2026",
       contact: "Aubrey",
       phone: "to follow",
     },
@@ -78,8 +78,8 @@ export const siteConfig = {
       gents: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       ladies: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       notes: "We'd love for everyone to come dressed in FORMAL Attire, Your presence in our colors will make our day even more beautiful!",
-      photo: "/Details/guestnew.png",
-      palette: "#0C3B3C, #F5EFE6",
+      photo: "/Details/guestAttire.png",
+      palette: "#093126, #106150,#A87F2F, #C9AF7E",
     },
     note: "We kindly request our guests to dress in attire following our wedding palette."
   },
