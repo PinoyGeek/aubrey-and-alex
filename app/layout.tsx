@@ -12,7 +12,6 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aubrey-and-alex.wed
 const canonicalUrl = siteUrl.replace(/\/$/, "")
 const desktopHero = "/Details/NewLinkPreview.png"
 const mobileHero = "/Details/NewLinkPreview.png"
-
 const OG_IMAGE = `${canonicalUrl}${desktopHero}`
 
 const coupleNames = `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}`

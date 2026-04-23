@@ -8,15 +8,15 @@ export const siteConfig = {
     backgroundMusic:"/background_music/Kahit Maputi na Ang Buhok Ko [Moira dela Torre version] piano cover  sheet music.mp3"
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSc6L0BNM76dwO74X5M-MOBpUIRAdfUJlWjvfxaDvoPe5lmYew/formResponse", //done
-    message: "https://script.google.com/macros/s/AKfycbwNyrJGIxoCWVPWkjA2YMwHciCDt9BNAB95efsAzZBmKgSQ7-XRrqAcPFWR-Ikd7VoK/exec",  //done
-    guestList: "https://script.google.com/macros/s/AKfycbyFanCKkvPBQuhLHVBQsG8R9uiFGgZKZC4RQC8xXBG7-ngm7RlcMkommQ9CvI0rcFWTlQ/exec", //done
-    guestRequest: "https://script.google.com/macros/s/AKfycbzqzWvflm77LwxSvz9omwNMVb4cfdUAV3tYTqoQ3-WCCvOMBu4TsIkq0EOptgwctwkePg/exec", //done
-    entourage: "https://script.google.com/macros/s/AKfycbxqESMCAgnUm0tu7kFExq0AZG4DP6ARhg1Ty6bd9vVLoNLmzTiPfr0McoHHkFd07BSkJQ/exec", //done
-    sponsors: "https://script.google.com/macros/s/AKfycbx-HKJ129-WZz24yOJXbIu0Te-9iX7Rdy_WYmfdjFGKqa5_g9jjh4aBFftctsHPWtXZ8w/exec", //done
-    weddingDetails: "https://script.google.com/macros/s/AKfycbwK14QVdwF6c_RwoYIoG0A3iPJTCNGFbxUeG1TTh3oL64_KgwqH9rdewrOsP6vpA7imEw/exec",  //done
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdbrssA05nYI6bxf7AS1ILBou6N0JKI9fSpmaOu0xnw1istyA/formResponse", //done
+    message: "https://script.google.com/macros/s/AKfycbyIe6FUBPdEvvsSdWfIISLs_qdGZGn-c3zxf6xLYz9k8J0v_SUZ10Z4IE4LdlRPlyzAtA/exec",  //done
+    guestList: "https://script.google.com/macros/s/AKfycbx4Vzy__YIIZRQS1QDPI813EvFMDq5QEYeSNXt0gku3sGJtqFx2jP-4u59x77cGXWriew/exec", //done
+    guestRequest: "https://script.google.com/macros/s/AKfycbxQ5ZbcHctR0fHis1Z-p5kQ6exPJHk46OCkVM31W_LGbLWsF7IH4Z1eh6iKy0IxU2ggYA/exec", //done
+    entourage: "https://script.google.com/macros/s/AKfycbwUzWGkyRmNvPFuPzCAarqy17qi4yvcObKYnIGwOGL5sg2657FrVxaGkjdTT-LWGxXcDA/exec", //done
+    sponsors: "https://script.google.com/macros/s/AKfycbxa4Rzcw7PeTsS3V6LUc06z_5_ubujPqy0UBefN9ac1XKobwqZJLZRCHJKWO5abmNCfew/exec", //done
+    weddingDetails: "https://script.google.com/macros/s/AKfycbyxMDMYeG4IWB2Y6b6aMIBQ3cgjRx_fk2kQP4-vwbeaXP8PBtOwc007bHUut054x9rBkg/exec",  //done
 ////google share 
-    googleShare: "https://docs.google.com/spreadsheets/d/1KEEivJE5gYiXdR6Bi3vLzqwoGkxrnbLG2nKXZwyUfag/edit?usp=sharing",
+    googleShare: "https://docs.google.com/spreadsheets/d/1NziJTcQb6S1d2LU-RWoDT60d1pjEKXXbMu99j_IQM3o/edit?usp=sharing",
   },
   wedding: {
     date: "June 21, 2026",
@@ -61,7 +61,7 @@ export const siteConfig = {
     location: "Adriano's Events Place and Prayer Garden Tagaytay",
     venue: "Tagaytay City",
     date: "June 21, 2026",
-    time: "4:00 PM",
+    time: "5:00 PM",
     image: ["/Details/reception1.png","/Details/reception2.png"],
   },                          
   dressCode: {
@@ -78,8 +78,8 @@ export const siteConfig = {
       gents: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       ladies: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       notes: "We'd love for everyone to come dressed in FORMAL Attire, Your presence in our colors will make our day even more beautiful!",
-      photo: "/Details/guestAttire.png",
-      palette: "#093126, #106150,#A87F2F, #C9AF7E",
+      photo: "/Details/newguestAttire.png",
+      palette: "#093126, #106150, #C9AF7E",
     },
     note: "We kindly request our guests to dress in attire following our wedding palette."
   },

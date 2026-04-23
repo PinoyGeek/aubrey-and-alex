@@ -46,7 +46,7 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    time: "2:00 PM",
+    time: "2:30 PM",
     title: "Arrival",
     // description: "Please arrive on time to find your seat, settle in, and get ready for the celebration.",
     location: ceremonyVenue,
@@ -62,7 +62,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/WeddingCeremony.png",
   },
   {
-    time: "4:30 PM",
+    time: "4:00 PM",
     title: "Photos",
     // description: "We are having an unplugged ceremony, meaning we kindly ask all guests to put away their phones and cameras. We want everyone to be fully in the moment with us. Don't worry—our professional photographer will capture all the special moments, and we'll be happy to share them with you later!",
     location: ceremonyVenue,
@@ -70,7 +70,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/PhotoSession.png",
   },
   {
-    time: "5:00 PM",
+    time: "4:30 PM",
     title: "Cocktail Hour",
     // description: "Enjoy drinks and light bites as we transition into the reception and mingle with guests.",
     location: receptionVenue,
@@ -78,15 +78,15 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/CockTailHour.png",
   },
   {
-    time: "6:00 PM",
-    title: "Program Starts",
+    time: "5:30 PM",
+    title: "Reception Program",
     // description: `Celebrate the grand entrance of ${groomNickname} & ${brideNickname} and the start of the evening festivities.`,
     location: receptionVenue,
     icon: FireworksIcon,
     imageSrc: "/weddingtimeline/reception welcom.png",
   },
   {
-    time: "7:00 PM",
+    time: "6:00 PM",
     title: "Dinner Service",
     // description: "Share a relaxed meal together as we continue the celebration.",
     location: receptionVenue,
