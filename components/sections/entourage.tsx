@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo, useRef } from "react"
 import { siteConfig, entourage as staticEntourage, principalSponsors as staticSponsors } from "@/content/site"
 import { Loader2, Users } from "lucide-react"
 import { Cormorant_Garamond, Cinzel } from "next/font/google"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -353,7 +353,7 @@ export function Entourage() {
       >
       {/* Corner floral decoration */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -362,7 +362,7 @@ export function Entourage() {
           style={{ transform: "scaleY(-1)" }}
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -371,7 +371,7 @@ export function Entourage() {
           style={{ transform: "scaleX(-1) scaleY(-1)" }}
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -379,7 +379,7 @@ export function Entourage() {
           className="absolute bottom-0 left-0 w-auto h-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px]"
           priority={false}
         />
-        <CloudinaryImage
+        <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}

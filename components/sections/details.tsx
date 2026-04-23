@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { QRCodeSVG } from "qrcode.react"
 import { siteConfig } from "@/content/site"
 import Image from "next/image"
-// import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 import { Cinzel, Cormorant_Garamond } from "next/font/google"
 import {
   Shirt,
@@ -347,7 +347,7 @@ export function Details() {
                     index === currentReceptionImageIndex ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <CloudinaryImage
+                  <PublicImage
                     src={src}
                     alt={siteConfig.reception.venue}
                     fill
@@ -638,7 +638,7 @@ export function Details() {
                       transform: `rotate(${currentRotation}deg) ${isActive ? 'scale(1.1)' : 'scale(1)'}`,
                     }}
                   >
-                    <CloudinaryImage
+                    <PublicImage
                       src={image}
                       alt={`Wedding couple ${index + 1}`}
                       fill

@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback, useEffect } from "react"
 import { MessageCircle, Heart, Sparkles, Send } from "lucide-react"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 import { Section } from "@/components/section"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -328,7 +328,7 @@ export function Messages() {
     >
       {/* Corner floral decoration */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -337,7 +337,7 @@ export function Messages() {
           style={{ transform: "scaleY(-1)" }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -346,7 +346,7 @@ export function Messages() {
           style={{ transform: "scaleX(-1) scaleY(-1)" }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -354,7 +354,7 @@ export function Messages() {
           className="absolute bottom-0 left-0 w-auto h-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px]"
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}

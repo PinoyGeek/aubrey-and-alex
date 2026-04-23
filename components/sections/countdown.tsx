@@ -6,7 +6,7 @@ import { motion } from "motion/react"
 import { Cormorant_Garamond, Cinzel } from "next/font/google"
 import { siteConfig } from "@/content/site"
 import Counter from "@/components/Counter"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 
 interface TimeLeft {
   days: number
@@ -175,7 +175,7 @@ export function Countdown() {
     >
       {/* Corner floral decoration */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/decoration-bottom.png"
           alt=""
           width={300}
@@ -184,7 +184,7 @@ export function Countdown() {
           style={{ transform: "scaleY(-1)" }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/decoration-bottom.png"
           alt=""
           width={300}
@@ -193,7 +193,7 @@ export function Countdown() {
           style={{ transform: "scaleX(-1) scaleY(-1)" }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/decoration-bottom.png"
           alt=""
           width={300}
@@ -201,7 +201,7 @@ export function Countdown() {
           className="absolute bottom-0 left-0 w-auto h-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px]"
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/decoration-bottom.png"
           alt=""
           width={300}
@@ -221,7 +221,7 @@ export function Countdown() {
           className="relative"
         >
           <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem] lg:w-[36rem] lg:h-[36rem] xl:w-[40rem] xl:h-[40rem] opacity-90">
-            <CloudinaryImage
+            <PublicImage
               src={siteConfig.couple.monogram}
               alt={`${groomNickname} & ${brideNickname} Monogram`}
               fill

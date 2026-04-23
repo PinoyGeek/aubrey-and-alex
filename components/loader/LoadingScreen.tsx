@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState, useRef } from "react"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 import { siteConfig } from "@/content/site"
 
 interface LoadingScreenProps {
@@ -270,7 +270,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
               : "opacity-0 -translate-y-3 scale-95 transition-all duration-700 ease-out"
           }
         >
-          <CloudinaryImage
+          <PublicImage
             src="/monogram/newMonogram.png"
             alt="Monogram"
             width={240}

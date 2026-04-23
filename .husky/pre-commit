@@ -1,1 +1,3 @@
-node --import tsx/esm scripts/cloudinary-pre-commit.ts
+#!/usr/bin/env sh
+# Optional: pnpm lint
+exit 0

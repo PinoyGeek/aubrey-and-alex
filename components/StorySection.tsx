@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Cinzel, Cormorant_Garamond } from "next/font/google";
-// import { CloudinaryImage } from '@/components/ui/cloudinary-image';
+// import { PublicImage } from '@/components/ui/public-image';
 import Image from "next/image";
 
 import { TornPaperEdge } from './TornPaperEdge';

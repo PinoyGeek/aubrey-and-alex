@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 import { siteConfig } from "@/content/site"
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ export function Hero() {
                 : "opacity-0 scale-95 transition-all duration-700 ease-out"
             }`}
           >
-            <CloudinaryImage
+            <PublicImage
               src="/monogram/newMonogram.png"
               alt={`${siteConfig.couple.brideNickname} & ${siteConfig.couple.groomNickname} monogram`}
               width={160}

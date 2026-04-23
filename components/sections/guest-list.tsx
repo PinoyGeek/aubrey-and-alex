@@ -20,7 +20,7 @@ import {
 } from "lucide-react"
 import { Cormorant_Garamond, Cinzel } from "next/font/google"
 import { siteConfig } from "@/content/site"
-import { CloudinaryImage } from "@/components/ui/cloudinary-image"
+import { PublicImage } from "@/components/ui/public-image"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -406,7 +406,7 @@ export function GuestList() {
     <Section id="guest-list" className="relative z-30 py-6 sm:py-10 md:py-12 lg:py-16">
       {/* Corner floral decoration */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -415,7 +415,7 @@ export function GuestList() {
           style={{ transform: "scaleY(-1)" }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -424,7 +424,7 @@ export function GuestList() {
           style={{ transform: "scaleX(-1) scaleY(-1)" }}
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
@@ -432,7 +432,7 @@ export function GuestList() {
           className="absolute bottom-0 left-0 w-auto h-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px]"
           priority={false}
         /> */}
-        {/* <CloudinaryImage
+        {/* <PublicImage
           src="/decoration/corner-left-bottom.png"
           alt=""
           width={300}
