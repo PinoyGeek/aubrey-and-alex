@@ -7,7 +7,7 @@ const args = process.argv.slice(2);
 const DIRECTORIES = args.length > 0
   ? args.map(dir => path.resolve(process.cwd(), dir))
   : [
-      path.resolve(process.cwd(), "public", "images"),
+      path.resolve(process.cwd(), "public", "Album"),
       path.resolve(process.cwd(), "public", "desktop-background"),
       path.resolve(process.cwd(), "public", "mobile-background"),
     ];

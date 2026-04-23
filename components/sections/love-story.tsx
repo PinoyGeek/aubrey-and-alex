@@ -38,17 +38,12 @@ export function LoveStory() {
         theme="light"
         layout="image-left"
         isFirst={true}
-        title="A Love Meant to Last"
-        imageSrc="/Album/couple (1).jpg"
+        // title="A Love Meant to Last"
+        imageSrc="/Album/couple (1).webp"
         text={
           <>
             <p className="mb-4">
-            Sheenly and Gero’s story began in the simplest yet most 
-            meaningful way—two hearts crossing paths at the 
-            right moment, unaware that something extraordinary 
-            was about to unfold.   
-            What started as a connection soon blossomed into a love that felt both natural and destined, growing stronger with every 
-            shared smile and conversation.
+            Aubrey and Alex first met in high school, brought together by their shared love for music in the choir. On February 19, 2011, after one of their practices, a simple “hello” from an unknown number found its way to Aubrey’s phone. That unexpected message marked the beginning of something neither of them could have imagined—a quiet start to a story that would grow with time.
             </p>
            
           </>
@@ -59,12 +54,12 @@ export function LoveStory() {
       <StorySection
         theme="dark"
         layout="image-right"
-        imageSrc="/Album/couple (2).jpg"
+        imageSrc="/Album/couple (4).webp"
         // title="Became a Couple (2019)"
         text={
           <>
             <p>
-            As time passed, their bond deepened into something unshakable. Through life’s highs and lows, they became each other’s constant—finding comfort in presence, strength in unity, and joy in the little things. Their love is built not just on romance, but on genuine friendship and unwavering support.
+            As the years passed, their friendship deepened into something more. On June 26, 2013, Aubrey and Alex officially became a couple—Alex, a fourth-year high school student, and Aubrey, just beginning her journey in college. Despite the changes and challenges that came with growing up, they chose each other, learning, dreaming, and building a love that only grew stronger with time.
             </p>
           </>
         }
@@ -75,12 +70,12 @@ export function LoveStory() {
         theme="light"
         layout="image-left"
         isLast={true}
-        imageSrc="/Album/couple (3).jpg"
+        imageSrc="/Album/couple (2).webp"
         // title="The Proposal (2025)"
         text={
           <>
             <p>
-            Together, they have created a journey filled with memories, laughter, and dreams for the future. Each chapter of their story reflects patience, understanding, and a love that continues to evolve. They have learned that true love is not just about finding the right person, but about choosing each other every day.
+            On July 24, 2024, in the breathtaking beauty of Bicol at the Mt. Mayon Helipad Lava Stream, Alex asked Aubrey the question that would begin their forever. Surrounded by a view as unforgettable as the moment itself, Aubrey said yes—to a lifetime of love, partnership, and the continuation of a story that began with a simple “hello.”
             </p>
            
           </>

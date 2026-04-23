@@ -88,7 +88,7 @@ export default function Home() {
               <MainHero />
               <Welcome />
               {/* <CoupleVideo />  */}
-              {/* <LoveStory /> */}
+              <LoveStory />
               <Countdown /> 
               {/* <Gallery /> */}
               <GuestList />
