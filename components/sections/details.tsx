@@ -662,15 +662,20 @@ export function Details() {
 
             {/* Reminders List */}
             <div className="space-y-4 sm:space-y-5 md:space-y-6 max-w-2xl mx-auto">
-              {/* Children Reminder */}
-              {/* <div className="bg-motif-cream/60 rounded-lg p-4 sm:p-5 md:p-6 border border-motif-deep/10 shadow-sm">
-                <h4 className={`${cinzel.className} text-base sm:text-lg md:text-xl font-semibold text-motif-deep mb-2 sm:mb-3`}>
-                  CHILDREN
+              {/* Adult-Only Celebration */}
+              <div className="bg-motif-cream/60 rounded-lg p-4 sm:p-5 md:p-6 border border-motif-deep/10 shadow-sm">
+                <h4
+                  className="lighten-regular text-[24px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[45px] leading-tight text-center mb-4 sm:mb-5 md:mb-6 "
+                  style={{ color: "var(--color-motif-deep)" }}
+                >
+                  Adult-Only Celebration
                 </h4>
-                <p className={`${cormorant.className} text-sm sm:text-base md:text-lg text-motif-deep/80 leading-relaxed`}>
-                  While we love your little ones, we kindly request an adults-only celebration so everyone can relax and enjoy the evening.
+                <p
+                  className={`${cormorant.className} text-sm sm:text-base md:text-lg text-motif-deep/80 leading-relaxed`}
+                >
+                “While we truly love your little ones, we kindly request that our wedding be an adults-only celebration, with the exception of children from our immediate family. We hope this allows everyone to relax, enjoy the evening, and celebrate with us, and we sincerely appreciate your understanding.”
                 </p>
-              </div> */}
+              </div>
 
               {/* Unplugged Ceremony Reminder */}
               <div className="bg-motif-cream/60 rounded-lg p-4 sm:p-5 md:p-6 border border-motif-deep/10 shadow-sm">
