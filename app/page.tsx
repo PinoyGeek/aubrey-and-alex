@@ -90,7 +90,7 @@ export default function Home() {
               {/* <CoupleVideo />  */}
               <LoveStory />
               <Countdown /> 
-              {/* <Gallery /> */}
+              <Gallery />
               <GuestList />
 {/* <BookOfGuests /> */}
               <Messages />
@@ -107,7 +107,7 @@ export default function Home() {
               {/* <FAQ /> */}
 
 
-              {/* <SnapShare /> */}
+              <SnapShare />
               <Footer />
             </div>
           </div>

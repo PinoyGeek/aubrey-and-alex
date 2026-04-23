@@ -19,38 +19,55 @@ const cormorant = Cormorant_Garamond({
 // Generate on each request so newly added images in public/ appear without a rebuild
 export const dynamic = "force-dynamic"
 
-async function getAlbumImages() {
-  const dir = "Album"
-  const abs = path.join(process.cwd(), "public", dir)
-  try {
-    const entries = await fs.readdir(abs, { withFileTypes: true })
-    const srcs = entries
-      .filter((e) => e.isFile())
-      .map((e) => ({ name: e.name, src: `/${dir}/${e.name}` }))
-      .filter(({ src }) => src.match(/\.(jpe?g|png|webp|gif)$/i))
-      .sort((a, b) => {
-        // Sort by the number inside parentheses, e.g. "couple (3).jpg"
-        const numA = parseInt(a.src.match(/\((\d+)\)/)?.[1] || "0", 10)
-        const numB = parseInt(b.src.match(/\((\d+)\)/)?.[1] || "0", 10)
-        return numA - numB
-      })
+const GALLERY_DIRS: { dir: string; category: "desktop" | "mobile" }[] = [
+  { dir: "desktop-background", category: "desktop" },
+  { dir: "mobile-background", category: "mobile" },
+]
 
-    return await Promise.all(
-      srcs.map(async ({ name, src }) => {
-        try {
-          const { width = 800, height = 600 } = await sharp(path.join(abs, name)).metadata()
-          const orientation: "portrait" | "landscape" = height > width ? "portrait" : "landscape"
-          // Drive the masonry card aspect-ratio via category
-          const category = orientation === "portrait" ? ("mobile" as const) : ("desktop" as const)
-          return { src, width, height, orientation, category }
-        } catch {
-          return { src, width: 800, height: 600, orientation: "landscape" as const, category: "desktop" as const }
-        }
-      }),
-    )
-  } catch {
-    return []
+async function getAlbumImages() {
+  const cwd = process.cwd()
+  const collectFromDir = async (dir: string, category: "desktop" | "mobile") => {
+    const abs = path.join(cwd, "public", dir)
+    try {
+      const entries = await fs.readdir(abs, { withFileTypes: true })
+      return entries
+        .filter((e) => e.isFile())
+        .map((e) => ({
+          src: `/${dir}/${e.name}`,
+          absPath: path.join(abs, e.name),
+          category,
+        }))
+        .filter(({ src }) => src.match(/\.(jpe?g|png|webp|gif)$/i))
+    } catch {
+      return [] as { src: string; absPath: string; category: "desktop" | "mobile" }[]
+    }
   }
+
+  const flat = await Promise.all(GALLERY_DIRS.map(({ dir, category }) => collectFromDir(dir, category)))
+  const srcs = flat.flat().sort((a, b) => {
+    const numA = parseInt(a.src.match(/\((\d+)\)/)?.[1] || "0", 10)
+    const numB = parseInt(b.src.match(/\((\d+)\)/)?.[1] || "0", 10)
+    if (numA !== numB) return numA - numB
+    return a.src.localeCompare(b.src)
+  })
+
+  return await Promise.all(
+    srcs.map(async ({ src, absPath, category: folderCategory }) => {
+      try {
+        const { width = 800, height = 600 } = await sharp(absPath).metadata()
+        const orientation: "portrait" | "landscape" = height > width ? "portrait" : "landscape"
+        return { src, width, height, orientation, category: folderCategory }
+      } catch {
+        return {
+          src,
+          width: 800,
+          height: 600,
+          orientation: "landscape" as const,
+          category: folderCategory,
+        }
+      }
+    }),
+  )
 }
 
 export default async function GalleryPage() {
@@ -160,7 +177,14 @@ export default async function GalleryPage() {
                 className="px-2 py-1 rounded border"
                 style={{ backgroundColor: "var(--color-motif-cream)", borderColor: "var(--color-motif-silver)", color: "var(--color-motif-deep)" }}
               >
-                public/Album
+                public/desktop-background
+              </code>{" "}
+              or{" "}
+              <code
+                className="px-2 py-1 rounded border"
+                style={{ backgroundColor: "var(--color-motif-cream)", borderColor: "var(--color-motif-silver)", color: "var(--color-motif-deep)" }}
+              >
+                public/mobile-background
               </code>
               .
             </p>
