@@ -10,9 +10,9 @@ import { ClientLayout } from "@/components/client-layout"
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aubrey-and-alex.weddinginvitationrsvp.com/"
 const canonicalUrl = siteUrl.replace(/\/$/, "")
-const desktopHero = "/Details/NewLinkPreview.png"
-const mobileHero = "/Details/NewLinkPreview.png"
-const OG_IMAGE = `${canonicalUrl}${desktopHero}`
+/** Hero + social preview (served from `public/Details/`) */
+const openGraphImagePath = "/Details/NewLinkPreview.png"
+const OG_IMAGE = new URL(openGraphImagePath, `${canonicalUrl}/`).toString()
 
 const coupleNames = `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}`
 const eventTitle = `${coupleNames} - Wedding Invitation`
@@ -114,10 +114,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        secureUrl: OG_IMAGE,
         width: 1200,
         height: 630,
-        type: "image/jpeg",
+        type: "image/png",
         alt: `${coupleNames} Wedding Invitation - ${siteConfig.wedding.date}`,
       },
     ],
@@ -171,13 +170,12 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=yes,email=no,address=no" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet" />
-        <link rel="preload" as="image" href={mobileHero} media="(max-width: 767px)" />
-        <link rel="preload" as="image" href={desktopHero} media="(min-width: 768px)" />
+        {/* Cinzel: `next/font` above. Other display fonts in one request: */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Lavishly+Yours&family=Style+Script&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="preload" as="image" href={openGraphImagePath} fetchPriority="high" />
         <link rel="preload" as="image" href="/Details/ceremony.png" />
         <link rel="preload" as="image" href="/Details/reception.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
