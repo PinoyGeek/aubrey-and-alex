@@ -54,7 +54,7 @@ const timelineEvents: TimelineEvent[] = [
     imageSrc: "/weddingtimeline/arrivalimage.png",
   },
   {
-    time: "3:00 PM",
+    time: "3:30 PM",
     title: "Wedding Ceremony",
     // description: `Join us as ${groomNickname} & ${brideNickname} exchange vows and begin their life together.`,
     location: ceremonyVenue,

@@ -35,16 +35,16 @@ export const siteConfig = {
   },
   giftRegistry: {
     QR_1:{
-    id: "Gcash",
-    src: "/QR/pleaseProvideQR.png",
-    label: "Gcash",
-    accountNumber: "Gcash: Aubrey Gonzaga",
+    id: "BPI",
+    src: "/QR/BPI.png",
+    label: "BPI",
+    accountNumber: "BPI: Aubrey Gonzaga",
     },
     QR_2:{
-    id: "Landbank",
-    src: "/QR/pleaseProvideQR.png",
-    label: "Landbank",
-    accountNumber: "Landbank: Aubrey Gonzaga",
+    id: "Gcash",
+    src: "/QR/Gcash.png",
+    label: "Gcash",
+    accountNumber: "Gcash: Aubrey Gonzaga",
     }
   },
   ceremony: {
@@ -52,7 +52,7 @@ export const siteConfig = {
     venue: "Tagaytay City",
     date: "June 21, 2026",
     day: "Sunday",
-    time: "3:00 PM",
+    time: "3:30 PM",
     entourageTime: "2:00 PM",
     guestsTime: "2:30 PM",
     image: "/Details/reception.png",
@@ -112,7 +112,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   },
   snapShare: {
     googleDriveLink: "https://drive.google.com/drive/folders/1ALay-pIjfX6JAd1JUhCnCvKy-Kr3FeA8?usp=sharing",
-    hashtag: ["#AubreyandAlex"],
+    hashtag: ["#WannAbbyYoursLexclusively"],
     instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },
 }

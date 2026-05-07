@@ -101,7 +101,7 @@ export default function Home() {
               {/* <Entourage /> */}
 
 
-              {/* <Registry /> */}
+              <Registry />
  
               {/* <PrincipalSponsors /> */}
               {/* <FAQ /> */}
