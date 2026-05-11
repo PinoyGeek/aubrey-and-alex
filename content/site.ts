@@ -38,13 +38,13 @@ export const siteConfig = {
     id: "BPI",
     src: "/QR/BPI.png",
     label: "BPI",
-    accountNumber: "BPI: Aubrey Gonzaga",
+    accountNumber: "BPI: Aubrey Consolacion",
     },
     QR_2:{
     id: "Gcash",
     src: "/QR/Gcash.png",
     label: "Gcash",
-    accountNumber: "Gcash: Aubrey Gonzaga",
+    accountNumber: "Gcash: Alex Jr. Bernardino",
     }
   },
   ceremony: {
@@ -77,8 +77,8 @@ export const siteConfig = {
     guests: {
       gents: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
       ladies: "Guests are kindly requested to wear attire in any of the shades within our wedding palette.Color pallet and image to be followed. STRICTLY no shorts, maong jeans, t-shirts, or slippers.",
-      notes: "We'd love for everyone to come dressed in FORMAL Attire, Your presence in our colors will make our day even more beautiful!",
-      photo: "/Details/newguestAttire.png",
+      notes: "We'd love for everyone to come dressed in formal semi-formal attire, Your presence in our colors will make our day even more beautiful!",
+      photo: "/Details/Gemini_Generated_Image_j5wntjj5wntjj5wn (1).png",
       palette: "#093126, #106150, #C9AF7E",
     },
     note: "We kindly request our guests to dress in attire following our wedding palette."
@@ -111,7 +111,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     secondary: "#F5F5DC",
   },
   snapShare: {
-    googleDriveLink: "https://drive.google.com/drive/folders/1ALay-pIjfX6JAd1JUhCnCvKy-Kr3FeA8?usp=sharing",
+    googleDriveLink: "https://drive.google.com/drive/folders/1H44SwuY4M7aHGTN4F6S8m3IYAuT3O6Hu?fbclid=IwY2xjawRutBlleHRuA2FlbQIxMABicmlkETFaVlRrajdJTFZuUjYzWVZIc3J0YwZhcHBfaWQPNTE0NzcxNTY5MjI4MDYxAAEeLVJTSBsy2uVIUVdm2P6r7caqWWI5jR1NPP1eBO5NuJr-oP4eaBFuyz6F734_aem_m0Nfjk7sv5B8qOCyhaLA3A",
     hashtag: ["#WannAbbyYoursLexclusively"],
     instructions: "Please scan this QR Code, create a folder with your name and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
   },

@@ -95,7 +95,7 @@ export default function Home() {
 {/* <BookOfGuests /> */}
               <Messages />
               <Details />
-              {/* <GuestInformation /> */}
+              <GuestInformation />
               <WeddingTimeline />
       
               {/* <Entourage /> */}

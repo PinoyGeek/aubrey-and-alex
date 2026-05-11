@@ -1,276 +1,508 @@
 "use client"
 
+import type { CSSProperties } from "react"
+
 import { Section } from "@/components/section"
 import { siteConfig } from "@/content/site"
 import { Car, Navigation, MapPin } from "lucide-react"
-import { Cormorant_Garamond, Cinzel } from "next/font/google"
-import { PublicImage } from "@/components/ui/public-image"
+import { Cormorant_Garamond } from "next/font/google"
+import Image from "next/image"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400"],
 })
 
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: "400",
-})
+/** Comma-separated hex list from site config, e.g. `" #a, #b, #c"` */
+function parsePalette(palette: string): string[] {
+  return palette
+    .split(",")
+    .map((c) => c.trim())
+    .filter(Boolean)
+}
 
-// Guest information color palette
-const GUEST_LIGHT = "#C1AC94"   // light beige/nude
-const GUEST_MEDIUM = "#624630"   // medium brown
-const GUEST_DARK = "#3E2914"    // dark brown
-const GUEST_BG = "#F8F4EE"      // very light beige container background
-
-// Guest attire motif palette (swatches shown in Wedding Attire)
-const GUEST_ATTIRE_PALETTE = [
-  "#A85D23",
-  "#BA7438",
-  "#543634",
-  "#7D5740",
-  "#C78537",
-  "#792C18",
-]
+/** Renders one paragraph, or a short list when the source uses newlines. */
+function NoteLines({
+  text,
+  className = "",
+}: {
+  text: string
+  className?: string
+}) {
+  const lines = text
+    .split(/\n/)
+    .map((l) => l.trim())
+    .filter(Boolean)
+  if (lines.length <= 1) {
+    return (
+      <p className={`whitespace-pre-line leading-relaxed ${className}`}>
+        {lines[0] ?? text}
+      </p>
+    )
+  }
+  return (
+    <ul className={`list-none space-y-2 ${className}`}>
+      {lines.map((line, i) => (
+        <li key={`${i}-${line.slice(0, 24)}`} className="flex gap-2.5 text-left">
+          <span
+            className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
+            style={{ backgroundColor: "var(--gi-accent)" }}
+          />
+          <span className="leading-relaxed">{line}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 export function GuestInformation() {
+  const { sponsors, guests } = siteConfig.dressCode
+  const weddingPalette = parsePalette(siteConfig.dressCode.colors)
+  const bgDeep = weddingPalette[0] ?? "#001F4B"
+  const accent = weddingPalette[2] ?? "#015B97"
+  const accentLight = weddingPalette[3] ?? "#6497B2"
+  const accentPale = weddingPalette[4] ?? "#B2CDE0"
+
+  const sponsorPalette = parsePalette(sponsors.palette)
+  const guestPalette = parsePalette(guests.palette)
+
+  const sectionStyle = {
+    "--gi-ink": bgDeep,
+    "--gi-accent": accent,
+    "--gi-accent-light": accentLight,
+    "--gi-accent-pale": accentPale,
+  } as CSSProperties
 
   return (
     <Section
       id="guest-information"
-      className="relative py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden bg-white"
+      className="relative py-12 md:py-16 lg:py-20 overflow-hidden bg-transparent"
+      style={sectionStyle}
     >
-      {/* Header - tighter on iPhone SE */}
-      <div className="relative z-30 text-center mb-4 sm:mb-6 md:mb-9 lg:mb-12 px-4 sm:px-4 max-w-[100vw]">
+      {/* Intro — transparent; white type + shadow for contrast on silk */}
+      <div className="relative z-10 mb-8 sm:mb-10 max-w-4xl mx-auto px-3 sm:px-5 text-center">
         <p
-          className={`${cormorant.className} text-[0.7rem] sm:text-xs md:text-sm uppercase tracking-[0.2em] sm:tracking-[0.28em] mb-1.5 sm:mb-2`}
-          style={{ color: GUEST_DARK }}
+          className={`${cormorant.className} text-[0.7rem] sm:text-xs md:text-sm uppercase tracking-[0.28em] text-white mb-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]`}
         >
           Important Guidelines
         </p>
 
         <h2
-          className="style-script-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-1 sm:mb-1.5 md:mb-3 md:mb-4 break-words"
-          style={{ color: GUEST_DARK }}
+          className="style-script-regular text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-1.5 sm:mb-3 md:mb-4"
+          style={{ textShadow: "0 2px 16px rgba(0,0,0,0.45), 0 1px 2px rgba(0,0,0,0.35)" }}
         >
           Guest Information
         </h2>
 
-        <p className={`${cormorant.className} text-xs sm:text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed px-1 sm:px-2 mb-2 sm:mb-3 min-w-0`} style={{ color: GUEST_MEDIUM }}>
+        <p
+          className={`${cormorant.className} text-xs sm:text-sm md:text-base text-white font-light max-w-xl mx-auto leading-relaxed px-2 mb-3 drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]`}
+        >
           Everything you need to know to make your experience smooth and enjoyable
         </p>
 
-        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 md:mt-4">
-          <div className="w-6 sm:w-8 md:w-12 lg:w-16 h-px opacity-50" style={{ backgroundColor: GUEST_MEDIUM }} />
-          <div className="w-1.5 h-1.5 rounded-full opacity-80 flex-shrink-0" style={{ backgroundColor: GUEST_DARK }} />
-          <div className="w-1.5 h-1.5 rounded-full opacity-60 flex-shrink-0" style={{ backgroundColor: GUEST_MEDIUM }} />
-          <div className="w-1.5 h-1.5 rounded-full opacity-80 flex-shrink-0" style={{ backgroundColor: GUEST_DARK }} />
-          <div className="w-6 sm:w-8 md:w-12 lg:w-16 h-px opacity-50" style={{ backgroundColor: GUEST_MEDIUM }} />
+     
+
+        <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
+          <div
+            className="w-8 sm:w-12 md:w-16 h-px opacity-80"
+            style={{ backgroundColor: accentPale }}
+          />
+          <div
+            className="w-1.5 h-1.5 rounded-full opacity-95"
+            style={{ backgroundColor: accent }}
+          />
+          <div
+            className="w-1.5 h-1.5 rounded-full opacity-95"
+            style={{ backgroundColor: accentPale }}
+          />
+          <div
+            className="w-1.5 h-1.5 rounded-full opacity-95"
+            style={{ backgroundColor: accentLight }}
+          />
+          <div
+            className="w-8 sm:w-12 md:w-16 h-px opacity-80"
+            style={{ backgroundColor: accentPale }}
+          />
+        </div>
+
+        <div className="space-y-2 pt-6 border-t border-white/25">
+          <h3
+            className="text-base sm:text-xl md:text-2xl font-semibold text-white drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]"
+          >
+            Important Information
+          </h3>
+          <p className="text-[11px] sm:text-xs md:text-sm text-white max-w-xl mx-auto leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
+            {siteConfig.dressCode.note}
+          </p>
         </div>
       </div>
 
-      {/* Content - comfortable padding on small screens */}
-      <div className="relative z-10 mb-4 sm:mb-7 max-w-4xl mx-auto px-4 sm:px-5 min-w-0">
-        <div className="space-y-4 sm:space-y-4">
-          {/* Attire - open layout, no container - mobile-optimized */}
-          <div className="py-4 sm:py-6 md:py-8 lg:py-10">
-            <h4 className={`${cinzel.className} text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-[0.08em] sm:tracking-[0.12em] uppercase text-center mb-1 sm:mb-2`} style={{ color: GUEST_DARK }}>
-              Wedding Attire
-            </h4>
-            <p className={`${cormorant.className} text-[11px] sm:text-xs md:text-sm font-normal tracking-[0.15em] sm:tracking-[0.2em] uppercase text-center mb-5 sm:mb-8 md:mb-10 lg:mb-12`} style={{ color: GUEST_MEDIUM }}>
-              We kindly request our guests to dress in formal attire following our theme.
-            </p>
+      {/* Cards */}
+      <div className="relative z-10 mb-4 sm:mb-7 max-w-4xl mx-auto px-3 sm:px-5">
+        <div className="space-y-3 sm:space-y-4">
+          {/* Attire Guidelines — card + inner panel layout */}
+          <div
+            className="relative rounded-2xl border border-charcoal/10 p-3.5 sm:p-5 md:p-6 overflow-hidden"
+            style={{
+              boxShadow: `0 18px 50px color-mix(in srgb, ${bgDeep} 14%, transparent)`,
+              backgroundColor: `color-mix(in srgb, var(--gi-accent-pale) 14%, #faf7f4)`,
+            }}
+          >
+            <div className="mb-3 sm:mb-4 text-center">
+              <h4
+                className={`${cormorant.className} text-[0.7rem] sm:text-sm md:text-[0.95rem] font-semibold tracking-[0.32em] uppercase`}
+                style={{ color: "var(--gi-ink)" }}
+              >
+                Attire &amp; Motif
+              </h4>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-14 max-w-4xl mx-auto justify-items-center md:justify-items-stretch">
-              {/* Left: Principal Sponsors - centered on mobile */}
-              <div className="text-center md:text-left flex flex-col items-center md:items-start w-full min-w-0 max-w-[280px] md:max-w-none">
-                <h5 className={`${cinzel.className} text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.1em] sm:tracking-[0.15em] uppercase mb-0.5 sm:mb-1`} style={{ color: GUEST_DARK }}>
-                  Principal Sponsors
-                </h5>
-                <p className={`${cormorant.className} text-[11px] sm:text-xs md:text-sm font-normal tracking-[0.12em] sm:tracking-[0.18em] uppercase mb-2 sm:mb-3 md:mb-4`} style={{ color: GUEST_MEDIUM }}>
-                  Strictly Formal
+            <div
+              className="relative w-full rounded-2xl border bg-white p-4 sm:p-6 md:p-8 shadow-[0_2px_24px_rgba(0,0,0,0.06)]"
+              style={{
+                borderColor: `color-mix(in srgb, var(--gi-ink) 20%, transparent)`,
+              }}
+            >
+              {/* Intro — centered, bold primary + softer secondary */}
+              <div className="text-center space-y-2 sm:space-y-3 pb-4 sm:pb-5">
+                <p
+                  className="text-xs sm:text-sm font-semibold leading-relaxed max-w-xl mx-auto px-1"
+                  style={{ color: "var(--gi-ink)" }}
+                >
+                  We kindly request our guests to dress in{" "}
+                  {siteConfig.dressCode.theme.replace(/-/g, " ").toLowerCase()} attire with colors from our motif.
                 </p>
-                <ul className={`${cormorant.className} text-[11px] sm:text-xs md:text-sm lg:text-base italic space-y-1 sm:space-y-1.5 mb-3 sm:mb-5 md:mb-6 leading-snug`} style={{ color: GUEST_DARK }}>
-                  <li>Gentlemen: Black Suit and Pants</li>
-                  <li>Ladies: Champagne Long Gown</li>
-                </ul>
-                <div className="relative w-full aspect-[4/3] max-w-[260px] sm:max-w-[280px] md:max-w-xs mx-auto md:mx-0 md:mr-auto">
-                  <PublicImage
-                    src="/Details/principalsponsornew.png"
-                    alt="Principal Sponsors attire - strictly formal"
-                    fill
-                    className="object-contain object-center md:object-left"
-                    sizes="(max-width: 375px) 260px, (max-width: 640px) 280px, 50vw"
-                    priority={false}
-                  />
-                </div>
+                <p
+                  className="text-[11px] sm:text-xs leading-relaxed max-w-md mx-auto font-normal opacity-[0.92]"
+                  style={{ color: "var(--gi-ink)" }}
+                >
+                  Please dress within our wedding colors to help create a soft, elegant celebration.
+                </p>
               </div>
 
-              {/* Right: Guests - centered on mobile when stacked */}
-              <div className="text-center md:text-right flex flex-col items-center md:items-end w-full min-w-0 max-w-[280px] md:max-w-none">
-                <div className="relative w-full aspect-[4/3] max-w-[260px] sm:max-w-[280px] md:max-w-xs mx-auto md:ml-auto md:mr-0 mb-3 sm:mb-5 md:mb-6 order-first">
-                  <PublicImage
-                    src="/Details/guest.png"
-                    alt="Guests attire - semi formal"
-                    fill
-                    className="object-contain object-center md:object-right"
-                    sizes="(max-width: 375px) 260px, (max-width: 640px) 280px, 50vw"
-                    priority={false}
-                  />
+              <div
+                className="h-px w-full mb-5 sm:mb-6"
+                style={{ backgroundColor: `color-mix(in srgb, var(--gi-ink) 22%, transparent)` }}
+              />
+
+              {/* Principal sponsors */}
+              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-7">
+                <div className="text-left space-y-1">
+                  <h5 className="font-semibold text-sm sm:text-base" style={{ color: "var(--gi-ink)" }}>
+                    Principal Sponsors Attire
+                  </h5>
+                  <p
+                    className="text-[11px] sm:text-xs"
+                    style={{ color: `color-mix(in srgb, var(--gi-ink) 52%, #766860)` }}
+                  >
+                    Kindly align attire below.
+                  </p>
                 </div>
-                <h5 className={`${cinzel.className} text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-[0.1em] sm:tracking-[0.15em] uppercase mb-0.5 sm:mb-1`} style={{ color: GUEST_DARK }}>
-                  Guests
-                </h5>
-                <p className={`${cormorant.className} text-[11px] sm:text-xs md:text-sm font-normal tracking-[0.12em] sm:tracking-[0.18em] uppercase mb-2 sm:mb-3 md:mb-4`} style={{ color: GUEST_MEDIUM }}>
-                  Semi-Formal
-                </p>
-                <ul className={`${cormorant.className} text-[11px] sm:text-xs md:text-sm lg:text-base italic space-y-1 sm:space-y-1.5 mb-3 sm:mb-5 md:mb-6 leading-snug`} style={{ color: GUEST_DARK }}>
-                  <li>Gentlemen: Long Sleeves and Pants</li>
-                  <li>Ladies: Floor-Length Dress</li>
-                </ul>
-                <div className="flex items-center justify-center md:justify-end gap-1.5 sm:gap-2 md:gap-2.5 flex-wrap mt-auto">
-                  {GUEST_ATTIRE_PALETTE.map((color) => (
-                    <div
-                      key={color}
-                      className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full flex-shrink-0 border border-white/50 shadow-sm"
-                      style={{ backgroundColor: color }}
+
+                <div
+                  className="rounded-xl sm:rounded-2xl overflow-hidden border bg-transparent shadow-none"
+                  style={{
+                    borderColor: `color-mix(in srgb, var(--gi-ink) 14%, transparent)`,
+                  }}
+                >
+                  <div className="relative w-full aspect-[4/3] sm:aspect-[5/3] max-h-[260px] sm:max-h-[300px] md:max-h-[340px] mx-auto">
+                    <Image
+                      src={sponsors.photo}
+                      alt="Principal sponsors attire guideline"
+                      fill
+                      className="object-contain p-2 sm:p-3"
+                      sizes="(min-width: 1024px) 700px, (min-width: 640px) 600px, 100vw"
+                      priority={false}
                     />
-                  ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2 sm:space-y-2.5 text-left">
+                  <div className="space-y-1">
+                    <p
+                      className={`${cormorant.className} text-[0.65rem] sm:text-xs font-semibold uppercase tracking-[0.28em]`}
+                      style={{ color: "var(--gi-accent)" }}
+                    >
+                      What to wear
+                    </p>
+                    <p
+                      className="text-sm sm:text-base font-semibold leading-snug"
+                      style={{ color: "var(--gi-ink)" }}
+                    >
+                      Beige dresses &amp; barong Tagalog
+                    </p>
+                  </div>
+                  <div
+                    className="text-[11px] sm:text-xs md:text-sm"
+                    style={{ color: `color-mix(in srgb, var(--gi-ink) 72%, #5c534c)` }}
+                  >
+                    <NoteLines text={sponsors.notes} className="leading-relaxed" />
+                  </div>
+                </div>
+
+                {/* Celebration palette — single row like mock */}
+                <div className="pt-1">
+                  <p
+                    className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] mb-2 sm:mb-2.5"
+                    style={{ color: "var(--gi-ink)" }}
+                  >
+                    Palette
+                  </p>
+                  <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-start">
+                    {sponsorPalette.map((color) => (
+                      <span
+                        key={color}
+                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white shadow-md ring-1 ring-black/[0.06]"
+                        style={{ backgroundColor: color }}
+                        title={color}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
+
+              <div
+                className="h-px w-full mb-5 sm:mb-6"
+                style={{ backgroundColor: `color-mix(in srgb, var(--gi-ink) 18%, transparent)` }}
+              />
+
+              {/* Wedding guests */}
+              <div className="space-y-3 sm:space-y-4">
+                <div className="text-left space-y-1">
+                  <h5 className="font-semibold text-sm sm:text-base" style={{ color: "var(--gi-ink)" }}>
+                    Wedding Guests
+                  </h5>
+                  <p
+                    className="text-[11px] sm:text-xs"
+                    style={{ color: `color-mix(in srgb, var(--gi-ink) 52%, #766860)` }}
+                  >
+                    Reference for all invited guests.
+                  </p>
+                </div>
+
+                <div
+                  className="rounded-xl sm:rounded-2xl overflow-hidden border bg-transparent shadow-none"
+                  style={{
+                    borderColor: `color-mix(in srgb, var(--gi-ink) 14%, transparent)`,
+                  }}
+                >
+                  <div className="relative w-full aspect-[4/3] sm:aspect-[5/3] max-h-[260px] sm:max-h-[300px] md:max-h-[340px] mx-auto">
+                    <Image
+                      src={guests.photo}
+                      alt="Guest attire guideline"
+                      fill
+                      className="object-contain p-2 sm:p-3"
+                      sizes="(min-width: 1024px) 700px, (min-width: 640px) 600px, 100vw"
+                      priority={false}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2 sm:space-y-2.5 text-left">
+                  <div className="space-y-1">
+                    <p
+                      className={`${cormorant.className} text-[0.65rem] sm:text-xs font-semibold uppercase tracking-[0.28em]`}
+                      style={{ color: "var(--gi-accent)" }}
+                    >
+                      What to wear
+                    </p>
+                    <p
+                      className="text-sm sm:text-base font-semibold leading-snug"
+                      style={{ color: "var(--gi-ink)" }}
+                    >
+                      Formal &amp; semi-formal attire
+                    </p>
+                  </div>
+                  <div
+                    className="text-[11px] sm:text-xs md:text-sm"
+                    style={{ color: `color-mix(in srgb, var(--gi-ink) 72%, #5c534c)` }}
+                  >
+                    <NoteLines text={guests.notes} className="leading-relaxed" />
+                  </div>
+                </div>
+
+                <div className="pt-1">
+                  <p
+                    className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] mb-2 sm:mb-2.5"
+                    style={{ color: "var(--gi-ink)" }}
+                  >
+                    Guest palette
+                  </p>
+                  <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-start">
+                    {guestPalette.map((color) => (
+                      <span
+                        key={color}
+                        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white shadow-md ring-1 ring-black/[0.06]"
+                        style={{ backgroundColor: color }}
+                        title={color}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="h-px w-full mt-6 sm:mt-8"
+                style={{ backgroundColor: `color-mix(in srgb, var(--gi-ink) 16%, transparent)` }}
+              />
             </div>
           </div>
 
-          {/* Arrival Time & Reception Guidelines - tighter padding on mobile */}
-          <div
-            className="relative rounded-xl sm:rounded-2xl border-2 backdrop-blur-lg p-3 sm:p-4 md:p-5 lg:p-6 overflow-hidden"
+          {/* Arrival Time & Reception Guidelines */}
+          {/* <div
+            className="relative rounded-2xl border border-charcoal/10 bg-white/90 backdrop-blur-lg p-3.5 sm:p-5 overflow-hidden"
             style={{
-              borderColor: `${GUEST_LIGHT}99`,
-              backgroundColor: GUEST_BG,
-              boxShadow: `0 18px 40px ${GUEST_MEDIUM}12`,
+              boxShadow: `0 18px 45px color-mix(in srgb, ${bgDeep} 16%, transparent)`,
             }}
           >
-            <div className="space-y-3 sm:space-y-4 md:space-y-5">
+            <div className="space-y-4 sm:space-y-5">
               <div
-                className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 shadow-lg p-3 sm:p-4 md:p-5 lg:p-6 min-w-0"
-                style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}
+                className="relative w-full rounded-2xl overflow-hidden border shadow-lg bg-white p-4 sm:p-6"
+                style={{ borderColor: `color-mix(in srgb, var(--gi-accent) 25%, transparent)` }}
               >
-                <div className="mb-1 sm:mb-2 md:mb-3">
-                  <h4 className={`${cinzel.className} text-[11px] sm:text-xs md:text-sm lg:text-base font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-1.5 sm:mb-2 md:mb-3`} style={{ color: GUEST_DARK }}>
+                <div className="mb-3 sm:mb-4">
+                  <h4
+                    className="text-[0.75rem] sm:text-sm md:text-base font-semibold tracking-[0.3em] uppercase mb-3"
+                    style={{ color: "var(--gi-ink)" }}
+                  >
                     Arrival Time
                   </h4>
-                  <div className="space-y-1.5 sm:space-y-2 md:space-y-2.5">
-                    <p className={`${cormorant.className} text-xs sm:text-sm md:text-base leading-relaxed`} style={{ color: GUEST_MEDIUM }}>
-                      We kindly request guests to arrive by{" "}
-                      <span className="font-semibold" style={{ color: GUEST_DARK }}>
-                        {siteConfig.ceremony.guestsTime ?? "1:30 PM"}
+                  <div className="space-y-2 sm:space-y-2.5">
+                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--gi-ink)" }}>
+                      Kindly arrive by{" "}
+                      <span className="font-semibold" style={{ color: "var(--gi-accent-light)" }}>
+                        {siteConfig.ceremony.guestsTime}
                       </span>{" "}
-                      to allow ample time to settle in before the ceremony, which will begin promptly at{" "}
-                      <span className="font-semibold" style={{ color: GUEST_DARK }}>
+                      so we can begin the wedding ceremony promptly at exactly{" "}
+                      <span className="font-semibold" style={{ color: "var(--gi-accent-light)" }}>
                         {siteConfig.ceremony.time}
                       </span>
                       .
                     </p>
-                    <p className={`${cormorant.className} text-xs sm:text-sm md:text-base leading-relaxed`} style={{ color: GUEST_MEDIUM }}>
-                      The reception will follow at{" "}
-                      <span className="font-semibold" style={{ color: GUEST_DARK }}>
-                        {siteConfig.reception.time ?? "5:00 PM"}
-                      </span>
-                      .
+                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--gi-ink)" }}>
+                      Your punctuality means so much to us — and don&apos;t forget to have a light snack beforehand so you
+                      can enjoy the celebration comfortably!
                     </p>
                   </div>
                 </div>
               </div>
 
               <div
-                className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden border-2 shadow-lg p-3 sm:p-4 md:p-5 lg:p-6 min-w-0"
-                style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}
+                className="relative w-full rounded-2xl overflow-hidden border shadow-lg bg-white p-4 sm:p-6"
+                style={{ borderColor: `color-mix(in srgb, var(--gi-accent) 25%, transparent)` }}
               >
-                <div className="mb-1 sm:mb-2 md:mb-3">
-                  <h4 className={`${cinzel.className} text-[11px] sm:text-xs md:text-sm lg:text-base font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-1.5 sm:mb-2 md:mb-3`} style={{ color: GUEST_DARK }}>
+                <div className="mb-3 sm:mb-4">
+                  <h4
+                    className="text-[0.75rem] sm:text-sm md:text-base font-semibold tracking-[0.3em] uppercase mb-3"
+                    style={{ color: "var(--gi-ink)" }}
+                  >
                     Reception Guidelines
                   </h4>
-                  <div className="space-y-1.5 sm:space-y-2 md:space-y-2.5">
-                    <p className={`${cormorant.className} text-xs sm:text-sm md:text-base leading-relaxed`} style={{ color: GUEST_MEDIUM }}>
-                      The seating will be formal, RSVP-style. That&apos;s why we&apos;re asking you to fill out this invitation form to secure your spot. Kindly do not bring plus ones unless explicitly stated in your invitation.
+                  <div className="space-y-2 sm:space-y-2.5">
+                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--gi-ink)" }}>
+                      The seating will be formal, RSVP-style. That&apos;s why we&apos;re asking you to fill out this
+                      invitation form to secure your spot. Kindly do not bring plus ones unless explicitly stated in
+                      your invitation.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          {/* Travel & Parking - mobile padding */}
-          <div
-            className="relative rounded-xl sm:rounded-2xl border-2 backdrop-blur-lg p-3 sm:p-4 md:p-5 lg:p-6 overflow-hidden min-w-0"
+          {/* Travel & Parking */}
+          {/* <div
+            className="relative rounded-2xl border border-charcoal/10 backdrop-blur-lg bg-white/90 p-3.5 sm:p-5 overflow-hidden"
             style={{
-              borderColor: `${GUEST_LIGHT}99`,
-              backgroundColor: GUEST_BG,
-              boxShadow: `0 18px 40px ${GUEST_MEDIUM}12`,
+              boxShadow: `0 16px 40px color-mix(in srgb, ${bgDeep} 14%, transparent)`,
             }}
           >
-            <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-2 sm:mb-2.5 md:mb-3 relative z-10">
-              <div className="p-1.5 rounded-full shadow-md border-2 flex-shrink-0" style={{ backgroundColor: GUEST_BG, borderColor: `${GUEST_LIGHT}99` }}>
-                <Car className="w-3.5 h-3.5" style={{ color: GUEST_DARK }} />
+            <div className="flex items-center justify-center gap-2 mb-2.5 sm:mb-3 relative z-10">
+              <div
+                className="p-1.5 rounded-full shadow-md bg-white/95 border"
+                style={{ borderColor: `color-mix(in srgb, var(--gi-accent) 28%, transparent)` }}
+              >
+                <Car className="w-3.5 h-3.5" style={{ color: "var(--gi-ink)" }} />
               </div>
-              <h4 className={`${cinzel.className} font-semibold text-xs sm:text-sm md:text-base`} style={{ color: GUEST_DARK }}>Parking &amp; Travel</h4>
+              <h4 className="font-semibold text-xs sm:text-base" style={{ color: "var(--gi-ink)" }}>
+                Parking &amp; Travel
+              </h4>
             </div>
 
-            <div className="space-y-2.5 sm:space-y-3 relative z-10">
-              <div className="rounded-lg sm:rounded-xl p-2.5 sm:p-3 border-2 shadow-sm min-w-0" style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}>
-                <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="p-1.5 sm:p-2 rounded-lg text-white flex-shrink-0" style={{ backgroundColor: GUEST_DARK }}>
-                    <Car className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <div className="space-y-3 relative z-10">
+              <div
+                className="rounded-xl p-2.5 sm:p-3 border shadow-sm bg-white/90"
+                style={{ borderColor: `color-mix(in srgb, var(--gi-accent) 22%, transparent)` }}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg text-white" style={{ backgroundColor: "var(--gi-accent)" }}>
+                    <Car className="w-4 h-4" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className={`${cormorant.className} text-xs sm:text-sm md:text-base font-semibold`} style={{ color: GUEST_DARK }}>Parking Available</p>
-                    <p className={`${cormorant.className} text-xs sm:text-xs md:text-sm opacity-85 leading-snug`} style={{ color: GUEST_MEDIUM }}>
+                  <div className="flex-1">
+                    <p className="text-[11px] sm:text-sm font-semibold" style={{ color: "var(--gi-ink)" }}>
+                      Parking Available
+                    </p>
+                    <p className="text-[10px] sm:text-xs opacity-85" style={{ color: "var(--gi-ink)" }}>
                       Parking is available at the venue. Please arrive early to find a comfortable spot.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-lg sm:rounded-xl p-2.5 sm:p-3 border-2 shadow-sm min-w-0" style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}>
-                <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="p-1.5 sm:p-2 rounded-lg text-white flex-shrink-0" style={{ backgroundColor: GUEST_DARK }}>
-                    <Navigation className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <div
+                className="rounded-xl p-2.5 sm:p-3 border shadow-sm bg-white/90"
+                style={{ borderColor: `color-mix(in srgb, var(--gi-accent) 22%, transparent)` }}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg text-white" style={{ backgroundColor: "var(--gi-accent)" }}>
+                    <Navigation className="w-4 h-4" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className={`${cormorant.className} text-xs sm:text-sm md:text-base font-semibold`} style={{ color: GUEST_DARK }}>Transportation</p>
-                    <p className={`${cormorant.className} text-xs sm:text-xs md:text-sm opacity-85 leading-snug`} style={{ color: GUEST_MEDIUM }}>
-                      Private vehicles and local transport are welcome. Coordinate with friends or family and plan your route ahead of time.
+                  <div className="flex-1">
+                    <p className="text-[11px] sm:text-sm font-semibold" style={{ color: "var(--gi-ink)" }}>
+                      Transportation
+                    </p>
+                    <p className="text-[10px] sm:text-xs opacity-85" style={{ color: "var(--gi-ink)" }}>
+                      Private vehicles and local transport are welcome. Coordinate with friends or family and plan your
+                      route ahead of time.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-lg sm:rounded-xl p-2.5 sm:p-3 border-2 min-w-0" style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}>
-                <p className={`${cormorant.className} text-xs sm:text-sm md:text-base font-semibold mb-1.5 sm:mb-2 flex items-center gap-2`} style={{ color: GUEST_DARK }}>
-                  <span className="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full flex-shrink-0" style={{ backgroundColor: "rgba(62, 41, 20, 0.12)", color: GUEST_DARK }}>
-                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <div
+                className="rounded-xl p-2.5 sm:p-3 border bg-white/85"
+                style={{ borderColor: `color-mix(in srgb, var(--gi-accent) 20%, transparent)` }}
+              >
+                <p className="text-[11px] sm:text-sm font-semibold mb-2 flex items-center gap-2" style={{ color: "var(--gi-ink)" }}>
+                  <span
+                    className="inline-flex items-center justify-center w-6 h-6 rounded-full text-white"
+                    style={{ backgroundColor: `color-mix(in srgb, var(--gi-accent) 85%, white)` }}
+                  >
+                    <MapPin className="w-3.5 h-3.5" />
                   </span>
                   Quick Tips
                 </p>
-                <ul className={`${cormorant.className} text-xs sm:text-xs md:text-sm space-y-1 opacity-90 leading-snug`} style={{ color: GUEST_MEDIUM }}>
+                <ul className="text-[10px] sm:text-xs space-y-1 opacity-90" style={{ color: "var(--gi-ink)" }}>
                   <li className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0" style={{ color: GUEST_DARK }}>•</span>
+                    <span className="mt-0.5" style={{ color: "var(--gi-accent)" }}>•</span>
                     <span>Plan your route ahead to avoid unexpected delays.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0" style={{ color: GUEST_DARK }}>•</span>
-                    <span>Please avoid walking during the ceremony. Approach the coordinator or wait to be guided.</span>
+                    <span className="mt-0.5" style={{ color: "var(--gi-accent)" }}>•</span>
+                    <span>
+                      Please avoid walking during the ceremony. Approach the coordinator or wait to be guided.
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0" style={{ color: GUEST_DARK }}>•</span>
+                    <span className="mt-0.5" style={{ color: "var(--gi-accent)" }}>•</span>
                     <span>Coordinate carpooling with friends or family when possible.</span>
                   </li>
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </Section>
   )
 }
-
