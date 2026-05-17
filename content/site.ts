@@ -28,7 +28,7 @@ export const siteConfig = {
   },
   details: {
     rsvp: {
-      deadline: "May 24, 2026",
+      deadline: "June 1, 2026",
       contact: "Aubrey",
       phone: "to follow",
     },
@@ -52,7 +52,7 @@ export const siteConfig = {
     venue: "Tagaytay City",
     date: "June 21, 2026",
     day: "Sunday",
-    time: "3:30 PM",
+    time: "3:00 PM",
     entourageTime: "2:00 PM",
     guestsTime: "2:30 PM",
     image: "/Details/reception.png",
