@@ -125,7 +125,7 @@ export function GuestInformation() {
           />
         </div>
 
-        <div className="space-y-2 pt-6 border-t border-white/25">
+        {/* <div className="space-y-2 pt-6 border-t border-white/25">
           <h3
             className="text-base sm:text-xl md:text-2xl font-semibold text-white drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]"
           >
@@ -134,7 +134,7 @@ export function GuestInformation() {
           <p className="text-[11px] sm:text-xs md:text-sm text-white max-w-xl mx-auto leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
             {siteConfig.dressCode.note}
           </p>
-        </div>
+        </div> */}
       </div>
 
       {/* Cards */}
@@ -164,7 +164,7 @@ export function GuestInformation() {
               }}
             >
               {/* Intro — centered, bold primary + softer secondary */}
-              <div className="text-center space-y-2 sm:space-y-3 pb-4 sm:pb-5">
+              {/* <div className="text-center space-y-2 sm:space-y-3 pb-4 sm:pb-5">
                 <p
                   className="text-xs sm:text-sm font-semibold leading-relaxed max-w-xl mx-auto px-1"
                   style={{ color: "var(--gi-ink)" }}
@@ -178,7 +178,7 @@ export function GuestInformation() {
                 >
                   Please dress within our wedding colors to help create a soft, elegant celebration.
                 </p>
-              </div>
+              </div> */}
 
               <div
                 className="h-px w-full mb-5 sm:mb-6"

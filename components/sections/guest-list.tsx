@@ -767,7 +767,7 @@ export function GuestList() {
                     )}
 
                     {/* Message to the couple */}
-                    <div>
+                    {/* <div>
                     <label className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold text-motif-deep mb-1.5 sm:mb-2 font-sans flex-wrap">
   <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-motif-deep flex-shrink-0" />
   <span>Song Request</span>
@@ -782,7 +782,7 @@ export function GuestList() {
   placeholder="Share a song you'd love to hear on our special day 🎶"
   className="w-full px-2.5 sm:px-3 py-1.5 sm:py-2 border-2 border-motif-deep/60 focus:border-motif-deep rounded-lg text-xs sm:text-sm font-sans text-motif-deep placeholder:text-motif-medium/70 transition-all duration-300 focus:ring-2 focus:ring-motif-deep/20 bg-white"
 />
-                    </div>
+                    </div> */}
 
                     {/* Email */}
                     <div>
