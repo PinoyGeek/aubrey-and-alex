@@ -97,12 +97,8 @@ export default function Home() {
               <Details />
               <GuestInformation />
               <WeddingTimeline />
-      
-              {/* <Entourage /> */}
-
-
+              <Entourage />
               <Registry />
- 
               {/* <PrincipalSponsors /> */}
               {/* <FAQ /> */}
 
